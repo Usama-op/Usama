@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img class="logo-img" src="https://yt3.googleusercontent.com/vGPA2dOSBcS6gI5hqGj1NEFKgUGHlXftQv6pKf-A9qjgG6Zw4mUD3wii5iRgWJPsTlIFn10fKQ=s160-c-k-c0x00ffffff-no-rj" alt="Logo">
+    </div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li><a href="#" onclick="showPage('about')">About</a></li>
+      <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Pages -->
+  <div id="home" class="page active c-top">
+    <div>
+      <h1>Techno Islamic Friends</h1>
+      <div class="c-card">
+        <div>
+          <h2>OUR CHANNEL CONTAINS</h2>
+          <p>
+            Welcome to Techno Islamic Friends! 🎧✨ <br><br>
+            Here, we blend the power of technology with the peace of Islam.
+            From Islamic reminders, Quranic wisdom, and motivational stories to smart tech tips,
+            Islamic apps, and digital tools that every Muslim should know —
+            this is your one-stop channel for faith + future. 🕌💻
+          </p>
+          <p>
+            Join the growing community: 
+            <a href="http://www.youtube.com/@technoislamicfriends4611" target="_blank">YouTube Channel</a>
+          </p>
+          <a class="neon-pulse-btn" href="https://youtube.com/@technoislamicfriends4611?sub_confirmation=1" target="_blank">
+            Subscribe
+          </a>
+        </div>
+        <div>
+          <img class="CHANNEL-IMG" src="https://yt3.googleusercontent.com/vGPA2dOSBcS6gI5hqGj1NEFKgUGHlXftQv6pKf-A9qjgG6Zw4mUD3wii5iRgWJPsTlIFn10fKQ=s160-c-k-c0x00ffffff-no-rj" alt="Channel Logo">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="about" class="page embed color">
+    <h1>My Videos</h1>
+    <p>This is my video 1</p>
+    <div class="embed-responsive">
+      <iframe src="https://www.youtube.com/embed/yJEBFdO6c8U?si=0Pxy9a-M_oc6O40y" allowfullscreen></iframe>
+    </div>
+
+    <p>This is my video 2</p>
+    <div class="embed-responsive">
+      <iframe src="https://www.youtube.com/embed/kbzY9I1tBG8?si=VnQDajk6gJemckKi" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div id="contact" class="page">
+    <h1>Contact</h1>
+    <p>Get in touch with us.</p>
+  </div>
+
+  <script>
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      document.getElementById('nav-links').classList.remove('open');
+    }
+
+    document.getElementById('menu-toggle').onclick = function () {
+      document.getElementById('nav-links').classList.toggle('open');
+    };
+  </script>
+</body>
+</html>
