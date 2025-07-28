@@ -27,7 +27,7 @@ form.addEventListener("submit", function (e) {
   })
   .then(response => {
     if (response.ok) {
-      msg.textContent = "Sign-in info sent to your email!";
+      msg.textContent = "sign-in successful 😍😍!";
       form.reset();
     } else {
       response.json().then(data => {
